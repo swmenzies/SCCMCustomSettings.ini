@@ -2,16 +2,16 @@
 # Reads local INI file and sets PACKAGES### variables based on set variables in the task sequence
 # Sets PACKAGES### variables for "Install Software Packages according to Dynamic Variable List" step
 
-# Initialize COM object for Task Sequence environment
+# Initialise COM object for Task Sequence environment
 try {
     $TSEnv = New-Object -ComObject Microsoft.SMS.TSEnvironment
     Write-Host "Task Sequence environment loaded successfully"
-    # Get variables set in the TS. i.e Set Task Sequence Variable -> Variable: SPSCollectionName1, Value: BASE
-    $CollectionName1 = $tsenv.Value("SPSCollectionName1")
-    $CollectionName2 = $tsenv.Value("SPSCollectionName2")
-    $CollectionName3 = $tsenv.Value("SPSCollectionName3")
-    $CollectionName4 = $tsenv.Value("SPSCollectionName4")
-    $CollectionName5 = $tsenv.Value("SPSCollectionName5")
+    # Get variables set in the TS. i.e Set Task Sequence Variable -> Variable: XXXCollectionName1, Value: BASE
+    $CollectionName1 = $tsenv.Value("XXXCollectionName1")
+    $CollectionName2 = $tsenv.Value("XXXCollectionName2")
+    $CollectionName3 = $tsenv.Value("XXXCollectionName3")
+    $CollectionName4 = $tsenv.Value("XXXCollectionName4")
+    $CollectionName5 = $tsenv.Value("XXXCollectionName5")
     $Defaults = "Default"
 } catch {
     Write-Error "Failed to load Task Sequence environment. This script must run in SCCM OSD context."
@@ -84,7 +84,7 @@ function Set-Defaults {
     }
 }
 
-# I need to add loop for 1 to 5, and default, for future devolpment
+# I need to add a loop for 1 to 5, and a default, for future development
 if (-not [string]::IsNullOrWhiteSpace($CollectionName1)) {
     Add-AppsFromSection -SectionName $CollectionName1
 }
@@ -105,5 +105,5 @@ if (-not [string]::IsNullOrWhiteSpace($Defaults)) {
     Set-Defaults
 }
 
-# Clean[?] exit from a powershgell script 
+# Clean[?] exit from a powershell script 
 exit 1
