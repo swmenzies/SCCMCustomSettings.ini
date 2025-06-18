@@ -70,7 +70,6 @@ function Set-Defaults {
        [string]$SectionName
     )
     if ($iniData.ContainsKey("Default")) {
-        Write-Host "inside first if."
         foreach ($TSSettings in $iniData["Default"]) {
             # If inside the [Default] section, parse key=value
             if ($TSSettings -match '^(.*?)=(.*)$') {
@@ -106,4 +105,4 @@ if (-not [string]::IsNullOrWhiteSpace($Defaults)) {
 }
 
 # Clean[?] exit from a powershell script 
-exit 1
+exit 0
