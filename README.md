@@ -40,3 +40,6 @@ Packages008	XXX00072:OSD_VisualStudioCode
 Packages009	XXX000BA:OSD_SQLStudio
 Packages010	XXX000D2:OSD_Python_Install
 Packages011	XXX00101:OSD_NotePadPlusPlusInstall
+
+
+This is working progress but it is a working script.
