@@ -12,7 +12,7 @@ I created a Run Command Line step and linked it to a package which has the power
 <br/>
 As the script runs, it assigns the variable name Packages###, and assigns the value from the CustomSettings.ini line within the section. It will loop through all lines in each section, for all variables declared, incrementing the package number.<br/>
 <br/>
-As an example _csutomsettings.ini_ with XXXCollectionName1=BASE & XXXCollectionName2=DEV<br/>
+As an example _customsettings.ini_ with XXXCollectionName1=BASE & XXXCollectionName2=DEV<br/>
 [BASE]<br/>
 XXX00109:OSD_ImperoClientInstall<br/>
 XXX000E4:OSD_Office2021_Install<br/>
@@ -41,5 +41,12 @@ Packages009	XXX000BA:OSD_SQLStudio<br/>
 Packages010	XXX000D2:OSD_Python_Install<br/>
 Packages011	XXX00101:OSD_NotePadPlusPlusInstall<br/>
 <br/>
+<br/>
+Task Sequence Steps:<br/>
+  1. *Run gather.ps1* - This is my first step in the TS, it is a _Run PowerShell Script_ and just pasted Johan Schrewelius script into the script block<br/>
+  2. *Set Task Sequence Variable* - CollectionName1 = BASE<br/>
+  3. *Run Command Line* - powershell.exe -ExecutionPolicy Bypass -WindowStyle Normal -File "CustomApplicationList.ps1". The script and in are loaded into a package and is referenced in this TS step.<br/>
+     ....<br/>
+  x. *Install Package* - Base variable name: PACKAGES<br/>
 <br/>
 This is working progress, but it is a working script, and I'm sure it can be improved....
